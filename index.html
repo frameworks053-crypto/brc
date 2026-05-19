@@ -1,0 +1,249 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="hero_fixed_files/css2.css">
+<style>
+  :root{
+    --navy:#0D1B2A;--navy-2:#0a1622;--navy-3:#142536;--navy-4:#1a2e44;
+    --gold:#C9A84C;--gold-2:#b09137;--gold-soft:#d9bd6b;
+    --paper:#F5F3EE;--paper-dim:rgba(245,243,238,.72);--paper-faint:rgba(245,243,238,.42);
+    --paper-line:rgba(245,243,238,.12);--gold-line:rgba(201,168,76,.28);
+    --serif:'Playfair Display',serif;--sans:'Noto Sans KR',sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--navy);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
+  .container{max-width:1240px;margin:0 auto;padding:0 32px}
+
+  /* NAV */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--paper-line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1400px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-mark{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold)}
+  .brand-name{font-family:var(--serif);font-size:20px;letter-spacing:.04em}
+  .brand-name span{color:var(--gold)}
+  .brand-sub{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--paper-faint);text-transform:uppercase;margin-top:2px}
+  .nav-links{display:flex;gap:36px;font-size:14px;color:var(--paper-dim)}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold);padding:10px 18px;font-size:13px;letter-spacing:.06em;transition:.2s}
+  .nav-cta:hover{background:var(--gold);color:var(--navy)}
+  @media(max-width:900px){.nav-links{display:none}}
+
+  /* HERO */
+  .hero{padding-top:200px;padding-bottom:120px;background:linear-gradient(180deg,#091525 0%,#0D1B2A 100%);min-height:100vh;position:relative;overflow:hidden}
+  .hero-bg .diag{position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(135deg,transparent 0 18px,#C9A84C 18px 19px)}
+  .hero-bg .glow{position:absolute;left:-200px;top:-200px;width:640px;height:640px;background:radial-gradient(closest-side,rgba(201,168,76,.18),transparent);filter:blur(20px)}
+  .rings{position:absolute;right:-180px;top:50%;width:760px;height:760px;transform:translateY(-50%);opacity:.18}
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .75  0 0 0 0 .6  0 0 0 .35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+  @media(max-width:980px){.hero-inner{grid-template-columns:1fr;gap:56px}}
+
+  .hero-tag{display:inline-flex;align-items:center;gap:14px;padding:10px 18px;border:1px solid var(--gold-line);border-radius:999px;background:rgba(201,168,76,.06);font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  .hero-tag i{width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 4px rgba(201,168,76,.22);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,.22)}50%{box-shadow:0 0 0 8px rgba(201,168,76,.06)}}
+
+  .hero h1{margin-top:32px;font-size:clamp(46px,6.6vw,92px);line-height:1.04;letter-spacing:-.02em;font-family:var(--serif);font-weight:600}
+  .hero h1 .gold{color:var(--gold);font-style:italic;font-weight:500}
+  .hero h1 .stroke{-webkit-text-stroke:1px var(--paper);color:transparent;font-style:italic;font-weight:500}
+  .hero-quote{margin-top:36px;max-width:520px;font-size:18px;line-height:1.8;color:var(--paper-dim)}
+  .hero-quote strong{color:var(--paper);font-weight:500}
+
+  .hero-cta{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;font-size:14px;letter-spacing:.04em;font-weight:500;transition:.2s;border:none}
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--paper);border:1px solid var(--paper-line)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn svg{width:16px;height:16px}
+
+  .hero-meta{display:flex;gap:48px;margin-top:64px;padding-top:36px;border-top:1px solid var(--paper-line);flex-wrap:wrap}
+  .hero-meta .m{display:flex;flex-direction:column;gap:6px}
+  .hero-meta .m b{font-family:var(--serif);font-size:34px;color:var(--gold);font-weight:600}
+  .hero-meta .m span{font-size:12px;letter-spacing:.18em;color:var(--paper-faint);text-transform:uppercase}
+
+  /* hero visual */
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:480px}
+  .hv-stamp{position:absolute;top:-20px;right:-20px;width:110px;height:110px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;background:var(--navy);z-index:10}
+  .hv-stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hv-stamp .core{position:relative;font-family:var(--serif);font-size:18px;color:var(--gold);text-align:center;line-height:1.1}
+  .hv-stamp .core small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.2em;margin-top:4px;color:var(--paper-faint)}
+  .hv-badge{position:absolute;bottom:-40px;left:-20px;background:rgba(10,20,32,0.92);border:1px solid rgba(201,168,76,0.4);padding:12px 18px;display:flex;align-items:center;gap:12px;z-index:10}
+  .hv-badge .b-num{font-family:var(--serif);font-size:36px;color:var(--gold);line-height:1}
+  .hv-badge .b-txt{font-size:12px;color:var(--paper-dim);line-height:1.5}
+
+  @media(max-width:980px){
+    .hero-visual{min-height:280px}
+    .hv-stamp{width:80px;height:80px;top:-10px;right:-10px}
+    .hv-stamp .core{font-size:13px}
+    .hv-badge{bottom:-20px;left:-10px;padding:8px 12px}
+    .hv-badge .b-num{font-size:24px}
+  }
+</style>
+
+</head><body><nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"></circle><path d="M15 15l6 6"></path></svg>
+      </span>
+      <span>
+        <div class="brand-name" style="font-family:var(--serif)">범랑<span>컴퍼니</span></div>
+        <div class="brand-sub">BEOMRANG · DETECTIVE</div>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#steps">우리의 약속</a>
+      <a href="#cases">해결 사례</a>
+      <a href="#process">조사 프로세스</a>
+      <a href="#packages">서비스</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </div>
+    <a href="#contact" class="nav-cta">
+      무료 상담
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+    </a>
+  </div>
+</nav>
+
+<section class="hero" id="top"><canvas style="position: absolute; inset: 0px; width: 100%; height: 100%; pointer-events: none; opacity: 0.07; z-index: 0;" width="1903" height="1096"></canvas>
+  <div class="hero-bg">
+    <div class="diag"></div>
+    <div class="glow"></div>
+  </div>
+  <svg class="rings" viewBox="0 0 760 760" fill="none" stroke="#C9A84C">
+    <circle cx="380" cy="380" r="380" stroke-opacity=".3"></circle>
+    <circle cx="380" cy="380" r="300" stroke-opacity=".4"></circle>
+    <circle cx="380" cy="380" r="220" stroke-opacity=".5"></circle>
+    <circle cx="380" cy="380" r="140" stroke-opacity=".6"></circle>
+    <circle cx="380" cy="380" r="60" stroke-opacity=".8"></circle>
+    <line x1="0" y1="380" x2="760" y2="380" stroke-dasharray="2 8" stroke-opacity=".4"></line>
+    <line x1="380" y1="0" x2="380" y2="760" stroke-dasharray="2 8" stroke-opacity=".4"></line>
+  </svg>
+  <div class="grain"></div>
+
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag"><i></i> 24시간 긴급 상담 · 비밀 보장 100%</span>
+        <h1>
+          진실은 반드시<br>
+          <span class="gold">밝혀집니다</span><span class="stroke">.</span>
+        </h1>
+        <p class="hero-quote">
+          <strong>심증만 있어도 괜찮습니다.</strong><br>
+          합법적 조사 전문가가 법적 테두리 안에서<br>확실한 사실을 확인해드립니다.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-gold">
+            무료 상담 신청하기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
+          </a>
+          <a href="#process" class="btn btn-ghost">
+            조사 프로세스 보기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M10 8l6 4-6 4z" fill="currentColor"></path></svg>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div class="m"><b id="cnt1">1400+</b><span>Cases resolved</span></div>
+          <div class="m"><b id="cnt2">97%</b><span>Success rate</span></div>
+          <div class="m"><b id="cnt3">11Y</b><span>Field experience</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div style="position:relative;width:100%;max-width:460px">
+          <img src="hero_fixed_files/y7YF4u6.png" style="width:100%;object-fit:contain;display:block;
+                      mask-image:linear-gradient(to bottom,black 70%,transparent 100%);
+                      -webkit-mask-image:linear-gradient(to bottom,black 70%,transparent 100%);">
+          <div class="hv-stamp">
+            <svg viewBox="0 0 130 130">
+              <defs><path id="circ" d="M65,65 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"></path></defs>
+              <text font-family="JetBrains Mono" font-size="9" fill="#C9A84C" letter-spacing="3">
+                <textPath href="#circ">VERITAS · BEOMRANG · COMPANY · SINCE · 2015 · </textPath>
+              </text>
+            </svg>
+            <div class="core">VERITAS<small>est. 2015</small></div>
+          </div>
+          <div class="hv-badge">
+            <div class="b-num">No.1</div>
+            <div class="b-txt">수원·경기 합법 민간조사 전문 에이전시</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  /* 배경 대각선 라인 애니메이션 */
+  var heroSec = document.querySelector('.hero');
+  var canvas = document.createElement('canvas');
+  canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.07;z-index:0';
+  heroSec.insertBefore(canvas, heroSec.firstChild);
+  var ctx = canvas.getContext('2d');
+  var lines = [];
+  function resize(){
+    canvas.width = heroSec.offsetWidth;
+    canvas.height = heroSec.offsetHeight;
+    lines = [];
+    for(var x = -canvas.height; x < canvas.width + canvas.height; x += 60){
+      lines.push({x:x, speed:0.18+Math.random()*0.12});
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  var offset = 0;
+  function drawLines(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle='#C9A84C';
+    ctx.lineWidth=0.8;
+    offset += 0.3;
+    lines.forEach(function(l){
+      var x = ((l.x + offset*l.speed + canvas.height) % (canvas.width + canvas.height*2)) - canvas.height;
+      ctx.beginPath();
+      ctx.moveTo(x,0);
+      ctx.lineTo(x+canvas.height,canvas.height);
+      ctx.stroke();
+    });
+    requestAnimationFrame(drawLines);
+  }
+  drawLines();
+
+  /* 숫자 카운트업 - ID로 직접 타겟팅 */
+  function countUp(id, target, suffix, duration){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var start = 0;
+    var step = target / (duration / 16);
+    var timer = setInterval(function(){
+      start += step;
+      if(start >= target){ start = target; clearInterval(timer); }
+      el.textContent = Math.floor(start) + suffix;
+    }, 16);
+  }
+
+  var counted = false;
+  function tryCount(){
+    if(counted) return;
+    var el = document.getElementById('cnt1');
+    if(!el) return;
+    var rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight){
+      counted = true;
+      countUp('cnt1', 1400, '+', 1500);
+      countUp('cnt2', 97, '%', 1500);
+      countUp('cnt3', 11, 'Y', 1500);
+    }
+  }
+  window.addEventListener('scroll', tryCount);
+  setTimeout(tryCount, 500);
+})();
+</script>
+</body></html>
